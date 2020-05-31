@@ -1,0 +1,4 @@
+Notas
+En el archivo index.js agrgegas la linea del import para bootstrap 
+antes de eso ocupas ir a la consola dentro del directorio del proyecto 
+y ejecutar el comando npm i --save react react-bootstrap
