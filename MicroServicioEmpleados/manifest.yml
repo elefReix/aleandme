@@ -1,0 +1,6 @@
+applications:
+  - name: MicroServiciosProductos
+    buildpack: java_buildpack
+    path: build/libs/MicroServiciosProductos.jar
+    services:
+      -   mysqldb

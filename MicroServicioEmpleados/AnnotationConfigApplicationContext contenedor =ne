@@ -1,0 +1,42 @@
+	AnnotationConfigApplicationContext contenedor =new AnnotationConfigApplicationContext();
+         contenedor.register(AppConfiguration.class);
+         contenedor.refresh();  
+     	Empleados empleado=(Empleados) contenedor.getBean("empleados");
+		empleado.setId(1);
+		empleado.setNombre("Juan");
+		empleado.setApellidoMaterno("De la Rosa");
+		empleado.setApellidoPaterno("Dominguez");
+		empleado.setMatricula("2133046510"); 
+		
+         ControllerEmpleados controller = (ControllerEmpleados) contenedor.getBean("controller") ;
+         
+         controller.visualizar();
+         controller.insertarEmpleados(empleado);
+         controller.visualizar();
+
+
+
+         	public void run(String... args) throws Exception {
+		Empleados empleado=new Empleados();
+		empleado.setId(2);
+		empleado.setNombre("Alberto");
+		empleado.setApellidoMaterno("De la Rosa");
+		empleado.setApellidoPaterno("Dominguez");
+		empleado.setMatricula("2133046510"); 
+
+		controller.insertarEmpleados(empleado);
+		controller.visualizar();
+		
+		
+		
+		controller.eliminar(2);
+		controller.visualizar();
+
+
+		
+		
+		
+	}
+
+
+tutorials/spring-boot-modules/spring-boot-crud
