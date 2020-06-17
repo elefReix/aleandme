@@ -1,0 +1,211 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "MicroServicio de Productos.\n",
+    "version" : "1.0.0",
+    "title" : "Swagger Productos",
+    "contact" : {
+      "email" : "aleortizvazquez@gmail.com"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/aleortiz/Productos/1.0.0",
+  "tags" : [ {
+    "name" : "productos",
+    "description" : "Crud de productos."
+  } ],
+  "schemes" : [ "https", "http" ],
+  "paths" : {
+    "/product/productos" : {
+      "get" : {
+        "tags" : [ "productos" ],
+        "summary" : "Se visualizan los productos",
+        "description" : "Recupera toda la informacion de los productos",
+        "operationId" : "visualizarProductos",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Exito",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "404" : {
+            "description" : "Solicitud incorrecta"
+          },
+          "500" : {
+            "description" : "Fracaso"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "productos" ],
+        "summary" : "Se agregan productos",
+        "description" : "",
+        "operationId" : "agregarProductos",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "product",
+          "description" : "Objeto de productos que se agrega",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Productos"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Exito",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "500" : {
+            "description" : "Fracaso"
+          }
+        }
+      }
+    },
+    "/product/productos/{id}" : {
+      "put" : {
+        "tags" : [ "productos" ],
+        "summary" : "Edita a un producto mediante su id",
+        "description" : "",
+        "operationId" : "EditarProducto",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "product",
+          "description" : "Edicion de un producto mediante su id",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Productos"
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Exito",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "404" : {
+            "description" : "Error",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "productos" ],
+        "summary" : "Se elimina un producto por su id",
+        "description" : "Elimina un producto por su id",
+        "operationId" : "eliminarProductos",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Exito",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "404" : {
+            "description" : "Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "petstore_auth" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "http://petstore.swagger.io/oauth/dialog",
+      "flow" : "implicit",
+      "scopes" : {
+        "write:pets" : "modify pets in your account",
+        "read:pets" : "read your pets"
+      }
+    },
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Productos" : {
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "nombre" : {
+          "type" : "string"
+        },
+        "fecha" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "Productos"
+      }
+    },
+    "Propiedades" : {
+      "properties" : {
+        "agregadoExito" : {
+          "type" : "string"
+        },
+        "borradoExito" : {
+          "type" : "string"
+        },
+        "borradoError" : {
+          "type" : "string"
+        },
+        "editadoExito" : {
+          "type" : "string"
+        },
+        "agregagoError" : {
+          "type" : "string"
+        }
+      },
+      "xml" : {
+        "name" : "Propiedades"
+      }
+    },
+    "Status" : {
+      "properties" : {
+        "mensaje" : {
+          "type" : "string"
+        },
+        "Codigo" : {
+          "type" : "integer"
+        }
+      },
+      "xml" : {
+        "name" : "Status"
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more about Swagger",
+    "url" : "http://swagger.io"
+  }
+}
